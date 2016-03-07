@@ -8,43 +8,56 @@
     font-family: "Microsoft Yahei", "Segoe UI", Arial, Helvetica, "Microsoft Jhenghei", "Hiragino Sans GB", "WenQuanYi Zen Hei", SimHei, STHeiti, "WenQuanYi Micro Hei", sans-serif;
 }
 
-h1, h2, h3 {
-  font-weight: bold;
+h1,
+h2,
+h3 {
+    font-weight: bold;
 }
 
-p, ul, ol {
-  font-size: 18px;
+p,
+ul,
+ol {
+    font-size: 18px;
 }
 
 .self-intro {
-  padding-left: 0;
+    padding-left: 0;
 }
 
 .self-intro li {
-  list-style: none;
-  background: #ebebeb;
-  margin-top: 24px;
-  border-radius: 10px;
+    list-style: none;
+    background: #ebebeb;
+    margin-top: 24px;
+    border-radius: 10px;
 }
 
 .self-intro img {
-  border-radius: 50%; 
-  margin: auto;
+    border-radius: 50%;
+    margin: 24px 0;
 }
 
 #navi {
-  position: relative;
-  top: 0px;
-  z-index: 66666;
-  background: #fff;
-  padding: 0 15px;
+    position: relative;
+    top: 0px;
+    z-index: 66666;
+    background: #fff;
+    padding: 0 15px;
 }
 
-/*@media all and (max-width: 992px) {
-  #navi {
-    display: none;
-  }
-}*/
+.navbar-brand {
+  background: url(../img/yuol.svg) no-repeat 10px center;
+  background-size: 32px;
+  text-indent: 32px;
+}
+
+@media all and (max-width: 992px) {
+    .self-intro li {
+      text-align: center;
+    }
+    .self-intro img {
+      margin-bottom: 0;
+    }
+}
 
 .btn-default,
 .btn-primary,
