@@ -16,6 +16,36 @@ p, ul, ol {
   font-size: 18px;
 }
 
+.self-intro {
+  padding-left: 0;
+}
+
+.self-intro li {
+  list-style: none;
+  background: #ebebeb;
+  margin-top: 24px;
+  border-radius: 10px;
+}
+
+.self-intro img {
+  border-radius: 50%; 
+  margin: auto;
+}
+
+#navi {
+  position: relative;
+  top: 0px;
+  z-index: 66666;
+  background: #fff;
+  padding: 0 15px;
+}
+
+/*@media all and (max-width: 992px) {
+  #navi {
+    display: none;
+  }
+}*/
+
 .btn-default,
 .btn-primary,
 .btn-success,

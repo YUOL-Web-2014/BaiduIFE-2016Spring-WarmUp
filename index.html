@@ -10,7 +10,7 @@
     <meta name="force-rendering" content="webkit">
     <meta name="author" content="YUOL-Web-2015">
     <link href="./css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="./css/bootstrap-theme.min.css">
+    <link rel="stylesheet" type="text/css" href="./css/bootstrap-theme.css">
 </head>
 
 <body>
@@ -53,25 +53,50 @@
         </div>
     </nav>
     <div class="container">
-        <ul class="nav nav-pilled nav-stacked col-lg-2">
-            <li role="presentation" class="active"><a href="#">我们是谁</a></li>
-            <li role="presentation"><a href="#">我们目前的作品</a></li>
-            <li role="presentation"><a href="#">Messages</a></li>
+        <ul id="navi" class="nav nav-pilled nav-stacked col-lg-2 col-md-4">
+            <li role="presentation" class="active"><a href="#who-we-are">我们是谁</a></li>
+            <li role="presentation"><a href="#works">我们目前的作品</a></li>
+            <li role="presentation"><a href="#members">我们这五个人</a></li>
         </ul>
-        <div class="container col-lg-10">
+        <article class="container col-lg-10 col-md-8">
             <h1>Hello World from YUOL '14</h1>
             <p>百度前端训练营，我们来了！</p>
-            <h2>我们是谁</h2>
+            <h2 id="who-we-are">我们是谁</h2>
             <p>我们的团队有五个人，均为长江大学党委宣传部下属之长大在线 Web 前端组 2014 级成员，负责学校各学院和机构的网站开发和维护。</p>
-            <h2>我们目前的作品</h2>
+            <h2 id="works">我们目前的作品</h2>
             <ul>
                 <li><strong>长江大学学校办公室</strong>：<a href="http://office.yangtzeu.edu.cn/">http://office.yangtzeu.edu.cn/</a></li>
                 <li><strong>长江大学外国语学院</strong>：<a href="http://fl.yangtzeu.edu.cn/">http://fl.yangtzeu.edu.cn/</a></li>
             </ul>
-        </div>
+        </article>
     </div>
     <script src="./js/jquery/jquery.min.js"></script>
     <script src="./js/bootstrap.min.js"></script>
+    <script type="text/javascript">
+    var navi = $('#navi')
+    var naviOffsetTop = navi.offset().top;
+
+    function getScrollTop() {
+        var scrollTop = 0;
+        if (document.documentElement && document.documentElement.scrollTop) {
+            scrollTop = document.documentElement.scrollTop;
+        } else if (document.body) {
+            scrollTop = document.body.scrollTop;
+        }
+        return scrollTop;
+    }
+
+    function naviTop() {
+        var result = getScrollTop() - naviOffsetTop;
+        return (result > 0 ? result : 0) + 'px';
+    }
+
+    window.addEventListener('scroll', function() {
+        if (document.body.scrollWidth >= 992) {
+            navi.css('top', naviTop());
+        }
+    });
+    </script>
 </body>
 
 </html>
