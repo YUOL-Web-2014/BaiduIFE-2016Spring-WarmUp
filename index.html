@@ -138,9 +138,6 @@
                         </div>
                     </div>
                 </li>
-
-
-
                 <li>
                     <div class="container">
                         <div class="container col-lg-2 col-md-2">
@@ -166,6 +163,8 @@
     <script type="text/javascript">
     var navi = $('#navi')
     var naviOffsetTop = navi.offset().top;
+    var timer = null;
+    var extraHeight = 30;
 
     function getScrollTop() {
         var scrollTop = 0;
@@ -179,12 +178,24 @@
 
     function naviTop() {
         var result = getScrollTop() - naviOffsetTop;
-        return (result > 0 ? result : 0) + 'px';
+        return (result > 0 ? result : 0);
+    }
+
+    function moveTo(targetObj, targetPos) {
+    	clearInterval(timer);
+    	timer = setInterval(function() {
+    		var curPos = parseInt(navi.css('top'));
+    		var speed = (targetPos - curPos) / 8;
+    		navi.css('top', (curPos + speed) + 'px');
+    		if (targetPos == curPos) {
+    			clearInterval(timer);
+    		}
+    	}, 30);
     }
 
     window.addEventListener('scroll', function() {
         if (document.body.scrollWidth >= 992) {
-            navi.css('top', naviTop());
+            moveTo(navi, naviTop() + extraHeight);
         }
     });
     </script>
