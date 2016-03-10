@@ -161,10 +161,11 @@
     <script src="./js/jquery/jquery.min.js"></script>
     <script src="./js/bootstrap.min.js"></script>
     <script type="text/javascript">
-    var navi = $('#navi')
-    var naviOffsetTop = navi.offset().top;
+    var $navi = $('#navi')
+    var naviOffsetTop = $navi.offset().top;
     var timer = null;
     var extraHeight = 30;
+    var $window = $(window);
 
     function getScrollTop() {
         var scrollTop = 0;
@@ -182,22 +183,37 @@
     }
 
     function moveTo(targetObj, targetPos) {
-    	clearInterval(timer);
-    	timer = setInterval(function() {
-    		var curPos = parseInt(navi.css('top'));
-    		var speed = (targetPos - curPos) / 8;
-    		navi.css('top', (curPos + speed) + 'px');
-    		if (targetPos == curPos) {
-    			clearInterval(timer);
-    		}
-    	}, 30);
+        console.log('moveTo');
+        clearInterval(timer);
+        timer = setInterval(function() {
+            var curPos = parseInt(targetObj.css('top'));
+            var speed = (targetPos - curPos) / 8;
+            targetObj.css('top', (curPos + speed) + 'px');
+            if (targetPos == curPos) {
+                clearInterval(timer);
+            }
+        }, 30);
     }
 
-    window.addEventListener('scroll', function() {
+    function judgeToListen() {
+        console.log('judge');
         if (document.body.scrollWidth >= 992) {
-            moveTo(navi, naviTop() + extraHeight);
+            window.addEventListener('scroll', moveTo($navi, naviTop() + extraHeight));
+        } else {
+            $window.off('scroll', moveTo);
+            $navi.css('top', extraHeight + 'px');
         }
-    });
+    }
+
+    $window.on('load', judgeToListen());
+    // $window.on('resize', judgeToListen());
+    window.addEventListener('resize', console.log('hehe'))
+
+    // window.addEventListener('scroll', function() {
+    //     if (document.body.scrollWidth >= 992) {
+    //         moveTo(navi, naviTop() + extraHeight);
+    //     }
+    // });
     </script>
 </body>
 
